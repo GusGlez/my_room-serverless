@@ -36,10 +36,10 @@ const guestbook = {
     }
 
     // retrieve entries and update the UI
-     function loadEntries() {
+     async function loadEntries() {
       console.log('Cargando historial...');
       $('#entries').html('Cargando historial...');
-       var result = guestbook.get();
+        var result = await guestbook.get();
         console.log(result);
         if (!result.entries) {
           $('#entries').html('No hay datos');
