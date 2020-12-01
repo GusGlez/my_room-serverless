@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Guestbook - a serverless web application</title>
+  <title>My - a serverless web application</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
 </head>
@@ -28,31 +28,9 @@
         </div>
         <div class="column">
           <h3 class="title is-3">
-            Add your message
+            Board
           </h3>
-          <form id="addEntry">
-            <div class="field">
-              <label class="label">Name</label>
-              <div class="control">
-                <input class="input" type="text" placeholder="your name" id="name">
-              </div>
-            </div>
-            <div class="field">
-              <label class="label">Email</label>
-              <div class="control">
-                <input class="input" type="text" placeholder="your email" id="email">
-              </div>
-            </div>
-            <div class="field">
-              <label class="label">Comment</label>
-              <div class="control">
-                <textarea class="textarea" placeholder="your comment" id="comment"></textarea>
-              </div>
-            </div>
-            <div class="control">
-              <button class="button is-primary">Send your message</button>
-            </div>
-          </form>
+          
         </div>
       </div>
     </div>
@@ -63,15 +41,13 @@
     <div class="box">
       <article class="media">
         <div class="media-left">
-          <figure class="image is-64x64">
-            <img src="{{icon}}" alt="No Image">
-          </figure>
+          
         </div>
         <div class="media-content">
           <div class="content">
             <p>
-              <strong>{{name}}</strong> <small>{{email}}</small>
-              <br> {{comment}}
+              <strong>{{temp}}</strong> <small>{{hum}}</small>
+              <br> {{takenAt}}
             </p>
           </div>
         </div>
