@@ -6,11 +6,17 @@ const guestbook = {
   // retrieve the existing guestbook entries
   get() {
     console.log(`${apiUrl}/get_data`);
-    return $.ajax({
+    var result = {};
+    $.ajax({
       type: 'GET',
       url: `${apiUrl}/get_data`,
-      dataType: 'json'
+      dataType: 'json',
+      success: function(data) {
+        //line added to save ajax response in var result
+        result = data;
+    },
     });
+    return result;
   }
 };
 
@@ -24,12 +30,13 @@ const guestbook = {
     }
 
     // retrieve entries and update the UI
-    async function loadEntries() {
+     function loadEntries() {
       console.log('Cargando historial...');
-      $('#entries').html('Loading entries...');
-      await guestbook.get().then(function (result) {
-        console.log(result.entries);
+      $('#entries').html('Cargando historial...');
+       guestbook.get().done(function (result) {
+        console.log(result);
         if (!result.entries) {
+          $('#entries').html('No hay datos');
           return;
         }
 
@@ -38,7 +45,7 @@ const guestbook = {
         }
         $('#entries').html(entriesTemplate(context));
       }).error(function (error) {
-        $('#entries').html('No entries');
+        $('#entries').html('No hay data');
         console.log(error);
       });
     }
