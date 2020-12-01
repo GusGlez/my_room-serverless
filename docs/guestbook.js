@@ -10,9 +10,11 @@ const guestbook = {
       url: `${apiUrl}/get_data`,
       dataType: 'json'
     });
-  },
+  }
+};
 
-  function() {
+
+  (function() {
 
     let entriesTemplate;
 
@@ -60,5 +62,5 @@ const guestbook = {
       prepareTemplates();
       loadEntries();
     });
-  }
-};
+  })();
+
