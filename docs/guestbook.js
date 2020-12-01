@@ -32,19 +32,19 @@ const guestbook = {
 
     try {
       var result = await guestbook.get();
-      console.log(result);
+      console.log(result.rows);
     } catch (err) {
       console.log(err);
     }
 
-    console.log(result);
-    if (!result.entries) {
+    console.log(result.rows);
+    if (!result.rows || result.rows < 1) {
       $('#entries').html('No hay datos');
       return;
     }
 
     const context = {
-      entries: result.entries
+      entries: result.rows
     }
     $('#entries').html(entriesTemplate(context));
 
