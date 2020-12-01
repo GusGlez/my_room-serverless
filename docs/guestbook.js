@@ -1,32 +1,16 @@
 /**
  * Web application
  */
-const apiUrl = 'https://CHANGEME.us-south.apigw.appdomain.cloud/guestbook';
+const apiUrl = 'https://b103f138.us-south.apigw.appdomain.cloud/my_room_api';
 const guestbook = {
   // retrieve the existing guestbook entries
   get() {
     return $.ajax({
       type: 'GET',
-      url: `${apiUrl}/entries`,
+      url: `${apiUrl}/get_data`,
       dataType: 'json'
     });
   },
-  // add a single guestbood entry
-  add(name, email, comment) {
-    console.log('Sending', name, email, comment)
-    return $.ajax({
-      type: 'PUT',
-      url: `${apiUrl}/entries`,
-      contentType: 'application/json; charset=utf-8',
-      data: JSON.stringify({
-        name,
-        email,
-        comment,
-      }),
-      dataType: 'json',
-    });
-  }
-};
 
 (function() {
 
