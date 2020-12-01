@@ -6,20 +6,26 @@ const guestbook = {
   // retrieve the existing guestbook entries
   get() {
     console.log(`${apiUrl}/get_data`);
-    var result = {};
-    $.ajax({
+
+     $.ajax({
       type: 'GET',
       url: `${apiUrl}/get_data`,
       dataType: 'json',
       success: function(data) {
         //line added to save ajax response in var result
-        result = data;
+        console.log(data);
+
+        return JSON.parse(data);
+      },
+      error:  function(XMLHttpRequest, textStatus, errorThrown) {
+        console.log(XMLHttpRequest);
+        console.log(textStatus);
+        console.log(errorThrown);
     },
     });
-    return result;
+
   }
 };
-
 
   (function() {
 
@@ -33,7 +39,7 @@ const guestbook = {
      function loadEntries() {
       console.log('Cargando historial...');
       $('#entries').html('Cargando historial...');
-       guestbook.get().done(function (result) {
+       var result = guestbook.get();
         console.log(result);
         if (!result.entries) {
           $('#entries').html('No hay datos');
@@ -44,10 +50,7 @@ const guestbook = {
           entries: result.entries
         }
         $('#entries').html(entriesTemplate(context));
-      }).error(function (error) {
-        $('#entries').html('No hay data');
-        console.log(error);
-      });
+    
     }
 
     // intercept the click on the submit button, add the guestbook entry and
