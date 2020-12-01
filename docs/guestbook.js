@@ -5,6 +5,7 @@ const apiUrl = 'https://b103f138.us-south.apigw.appdomain.cloud/my_room_api';
 const guestbook = {
   // retrieve the existing guestbook entries
   get() {
+    console.log(`${apiUrl}/get_data`);
     return $.ajax({
       type: 'GET',
       url: `${apiUrl}/get_data`,
@@ -26,7 +27,7 @@ const guestbook = {
     async function loadEntries() {
       console.log('Cargando historial...');
       $('#entries').html('Loading entries...');
-      await guestbook.get().done(function (result) {
+      await guestbook.get().then(function (result) {
         console.log(result.entries);
         if (!result.entries) {
           return;
