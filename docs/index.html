@@ -30,7 +30,7 @@
           <h3 class="title is-3">
             Board
           </h3>
-          
+          <canvas id="myChart"></canvas>
         </div>
       </div>
     </div>
@@ -46,8 +46,8 @@
         <div class="media-content">
           <div class="content">
             <p>
-              <strong>{{temp}}</strong> <small>{{hum}}</small>
-              <br> {{takenAt}}
+              <strong>{{doc.temp}}</strong> <small>{{doc.hum}}</small>
+              <br> {{doc.takenAt}}
             </p>
           </div>
         </div>
@@ -55,7 +55,28 @@
     </div>
     {{/each}}
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
 
+    // The data for our dataset
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'My First dataset',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="guestbook.js"></script>
